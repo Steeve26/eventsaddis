@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
+import { ClerkProvider, SignedIn } from '@clerk/nextjs'
+import './globals.css'
+import Header from "@/components/shared/Header";
 
 const poppins = Poppins({ 
   subsets: ["latin"],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-poppins',
 });
 
@@ -16,14 +18,21 @@ export const metadata: Metadata = {
   }
 };
 
+
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body className={poppins.variable}>{children}</body>
-    </html>
-  );
+    <ClerkProvider>
+      <html lang="en">
+        <body className={poppins.variable}>
+          {/* <Header></Header> */}
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
+  )
 }
+
