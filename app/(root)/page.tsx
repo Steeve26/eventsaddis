@@ -9,7 +9,7 @@ export default function Home() {
     <main className=" min-h-full flex flex-col">
       <section className="bg-gray-200 pb-10">
         <div className="container max-w-[74rem] w-full mx-auto px-3 pt-6 flex items-center justify-between flex-col gap-10 sm:flex-row sm:px-5 md:px-8 ">
-          <div className="columns flex flex-col w-full justify-center sm:max-w-[300] md:max-w-[400]">
+          <div className="columns flex flex-col w-full justify-center sm:max-w-[300px] md:max-w-[400px]">
             <h1 className="text-2xl font-bold mb-3 pt-6 capitalize sm:text-3xl md:text-4xl">Host, connect, <br />celebrate: Your events, our platform!</h1>
             <p>Experience the difference that EventsAddis can make. Let us be the platform that elevates your events to new heights of success and joy.</p>
             <Link href="#footer"><Button className="rounded mt-10 w-full lg:w-auto text-lg">Explore now</Button></Link>
