@@ -24,7 +24,7 @@ export default function MobileNav() {
             <Image src="/assets/images/logo.svg" alt="logo" width={128} height={38}></Image>
             EventsAddis
             <Separator className=" border border-gray-200"/>
-            <Button className=" !mt-6 bg-grey-500">Welcome</Button>
+            <Button className=" !mt-6 bg-grey-500 flex gap-2 items-center"><p>Welcome</p> <p className="text-xl translate-y-[-3.5px]">🙌</p></Button>
           </SheetHeader>
 
           <NavItems />
