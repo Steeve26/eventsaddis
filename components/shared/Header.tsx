@@ -8,7 +8,7 @@ import MobileNav from "./MobileNav";
 export default function Header() {
   return (
     <header className="relative z-10 shadow-md">
-      <div className=" wrapper !py-2 flex items-cetner justify-between">
+      <div className="wrapper !py-2 flex items-cetner justify-between">
         <Link href="/" className="w-28">
           <Image src="/assets/images/logo.svg" 
           width={128} height={38} alt="AddisEvents Logo"/>
@@ -16,13 +16,13 @@ export default function Header() {
         </Link>
 
         <SignedIn>
-          <nav className=" md:flex-between hidden w-full max-w-xs">
+          <nav className="md:flex-between hidden w-full max-w-xs">
             <Navbar />
           </nav>
         </SignedIn>
 
         <div className="flex items-center justify-end gap-3">
-          <div className=" h-max flex gap-5">
+          <div className="h-max flex gap-5">
             <SignedIn>
               <UserButton/>
               <MobileNav />

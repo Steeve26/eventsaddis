@@ -16,15 +16,15 @@ import NavItems from "./Navbar";
 
 export default function MobileNav() {
   return (
-    <nav className=" md:hidden cursor-pointer flex">
+    <nav className="md:hidden cursor-pointer flex">
       <Sheet>
         <SheetTrigger><CgMenuLeftAlt size={28} color="#6e5cf4" /></SheetTrigger>
         <SheetContent className="bg-white/20 shadow-l bg-white" side={"top"}>
-          <SheetHeader className=" mb-10">
+          <SheetHeader className="mb-10">
             <Image src="/assets/images/logo.svg" alt="logo" width={128} height={38}></Image>
             EventsAddis
-            <Separator className=" border border-gray-200"/>
-            <Button className=" !mt-6 bg-grey-500 flex gap-2 items-center"><p>Welcome</p> <p className="text-xl translate-y-[-3.5px]">🙌</p></Button>
+            <Separator className="border border-gray-200"/>
+            <Button className="!mt-6 bg-grey-500 flex gap-2 items-center"><p>Welcome</p> <p className="text-xl translate-y-[-3.5px]">🙌</p></Button>
           </SheetHeader>
 
           <NavItems />

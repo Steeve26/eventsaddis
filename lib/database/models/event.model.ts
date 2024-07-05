@@ -5,7 +5,7 @@ export interface IEvent extends Document {
   title: string;
   description? : string;
   location? : string;
-  imageUr1: string;
+  imageUrl: string;
   createdAt: Date;
   startDateTime: Date;
   endDateTime: Date;
@@ -13,7 +13,7 @@ export interface IEvent extends Document {
   isFree: boolean;
   url?: string;
   category: { _id: string, name: string};
-  organizer: Types .ObjectId | string;
+  organizer: { _id: string, firstName: string, lastName: string }
 }
 
 const EventSchema = new Schema({
