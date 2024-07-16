@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import { loadStripe } from '@stripe/stripe-js';
 import { useEffect } from "react";
 import { checkoutOrder } from "@/lib/actions/order.actions";
+import { redirect } from "next/navigation";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -11,7 +12,7 @@ loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
-export default function Checkout({event, userId}: {event: IEvent, userId: string}) {
+export default function Checkout({event, userId}: {event: IEvent, userId: string}) {  
 
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
@@ -26,6 +27,7 @@ export default function Checkout({event, userId}: {event: IEvent, userId: string
   }, []);
 
   const onCheckout = async () => {
+    
     const order = {
       eventTitle: event.title,
       eventId: event._id,
@@ -34,7 +36,11 @@ export default function Checkout({event, userId}: {event: IEvent, userId: string
       buyerId: userId
     }
 
-    await checkoutOrder(order);
+    const url = await checkoutOrder(order);
+
+    if(typeof url === 'string'){
+      redirect(url)
+    }
   }
 
   return (
