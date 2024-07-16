@@ -7,6 +7,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaLink } from "react-icons/fa";
 import Link from "next/link";
 import Collection from "@/components/shared/Collection";
+import CheckoutButton from "@/components/shared/CheckoutButton";
 
 export default async function eventDetails( {params: {id}, searchParams}: SearchParamProps) {
   const event = await getEventById(id)
@@ -42,7 +43,9 @@ export default async function eventDetails( {params: {id}, searchParams}: Search
                 </p>
               </div>
             </div>
-            {/* CHECKOUT BUTTON */}
+            
+            <CheckoutButton event={event}/>
+            
             <div className="flex flex-col gap-5">
               <div className="flex gap-2 md:gap-3">
                 <div className="flex items-center">

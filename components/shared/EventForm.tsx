@@ -45,15 +45,7 @@ export default function EventForm({userId, type, event, eventId}: EventFormProps
   const [startDate, setStartDate] = useState(new Date());
   const [freeEntry, setFreeEntry] = useState(false);
   const router = useRouter()
-
-  console.log(event);
-  // const populatedValues = {
-  //   ...event,
-  //   category: event?.category._id,
-  //   startDateTime: new Date(event?.startDateTime),
-  //   endDateTime: new Date(event?.endDateTime),
-  //   categoryId: event?.category._id,
-  // }
+  
   const initialValues = event && type === 'Update' 
   ? { 
     ...event, 
