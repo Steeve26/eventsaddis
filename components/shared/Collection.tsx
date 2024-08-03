@@ -1,5 +1,6 @@
 import { IEvent } from "@/lib/database/models/event.model"
 import EventCard from "./EventCard";
+import Pagination from "./Pagination";
 
 type collectionProps = {
   data: IEvent[],
@@ -12,6 +13,8 @@ type collectionProps = {
   urlParamName?: string
 }
 export default function Collection({data, emptyTitle, emptyStateSubtext, collectionType, limit, page, totalPages = 0, urlParamName}: collectionProps) {
+  console.log(data);
+  
   return (
     <>
       {
@@ -22,14 +25,20 @@ export default function Collection({data, emptyTitle, emptyStateSubtext, collect
               const hasOrderLink = collectionType === 'Events_Organized';
               const hidePrice = collectionType === 'My_Tickets';
 
+              console.log(hasOrderLink, hidePrice);
+              
               return (
-                <li key={event._id} className="">
+                <li key={event._id} className="flex-center">
                   <EventCard event={event} hasOrderLink={hasOrderLink}
                   hidePrice={hidePrice}/>
                 </li>
               )
             })}
           </ul>
+
+          {totalPages > 1 && (
+            <Pagination urlParamName={urlParamName} page={page} totalPages={totalPages}/>
+          )}
         </div> :
 
         <div className="flex-center flex-col gap-3 wrapper min-h-[200px] w-full rounded-[14px] bg-grey-50 py-28 text-center">

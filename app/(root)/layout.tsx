@@ -9,7 +9,9 @@ export default function RootLayout({
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      {children}
+        <div className="min-h-[calc(100vh-119.59px)]">
+          {children}
+        </div>
       <Footer />
     </div>
   );

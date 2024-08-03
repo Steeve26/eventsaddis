@@ -1,20 +1,23 @@
-// "use client"
-
+import CategoryFilter from "@/components/shared/CategoryFilter";
 import Collection from "@/components/shared/Collection";
+import Search from "@/components/shared/Search";
 import { Button } from "@/components/ui/button";
 import { getAllEvents } from "@/lib/actions/event.actions";
-import { IEvent } from "@/lib/database/models/event.model";
+// import { IEvent } from "@/lib/database/models/event.model";
+import { SearchParamProps } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-// import { useEffect, useState } from "react";
+// import { useRouter } from "next/navigation";
 
-export default async function Home() {
+export default async function Home({searchParams}: SearchParamProps) {
+  const page = Number(searchParams?.page) || 1;
+  const searchText = (searchParams?.query as string) || ''
+  const category = (searchParams?.category as string) || ''
 
   const events = await getAllEvents({
-    query: '',
-    category: '',
-    page: 1,
+    query: searchText,
+    category,
+    page,
     limit: 6
   })
 
@@ -37,9 +40,10 @@ export default async function Home() {
 
       <section id="events" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
         <h2 className="h2-bold capitalize">trusted by <br /> thousands of events </h2>
-        <div className="flex w-full flex-col gap-5 md:flex-row ">
-          Search
-          CategoryFilter
+        <div className="flex w-full flex-col gap-5 md:flex-row">
+          <Search placeholder="Search"/>
+          <CategoryFilter/>
+
         </div>
 
         <Collection 
@@ -48,8 +52,8 @@ export default async function Home() {
           emptyStateSubtext="Please come back later"
           collectionType="All_Events"
           limit={6}
-          page={1}
-          totalPages={2}
+          page={page}
+          totalPages={events?.totalPages}
         />
       </section>
 

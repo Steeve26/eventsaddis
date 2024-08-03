@@ -24,7 +24,7 @@ import { HiOutlinePlus } from "react-icons/hi"
 import { ICategory } from "@/lib/database/models/category.model"
 import { useEffect, useState } from "react"
 import { Input } from "../ui/input"
-import { createCategory, getCategories } from "@/lib/actions/category.actions"
+import { createCategory, getAllCategories } from "@/lib/actions/category.actions"
 
 type DropDownProps = {
   value?: string,
@@ -46,7 +46,7 @@ export default function DropDown({ onChangeHandler, value }: DropDownProps) {
   }
 
   const fetchCategories = async () => {
-    const categoryList = await getCategories()
+    const categoryList = await getAllCategories()
     console.log(categoryList);
     
     return categoryList
